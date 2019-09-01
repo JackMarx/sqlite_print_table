@@ -1,4 +1,5 @@
 require "sqlite_print_table/version"
+require "sqlite3"
 
 class SQLite3::Database
   def print_table(sql_command_string, options={})
