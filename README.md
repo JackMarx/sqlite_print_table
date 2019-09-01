@@ -1,14 +1,14 @@
 # SqlitePrintTable
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sqlite_print_table`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+The `sqlite_print_table` gem is used to print a formatted table from a sqlite database using a SQL query.
+Note: This works in addition to the `sqlite3` gem.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
+gem 'sqlite3'
 gem 'sqlite_print_table'
 ```
 
@@ -18,21 +18,45 @@ And then execute:
 
 Or install it yourself as:
 
+    $ gem install sqlite3
     $ gem install sqlite_print_table
 
 ## Usage
 
-TODO: Write usage instructions here
+Example: 
 
-## Development
+```
+require "sqlite3"
+require "sqlite_print_table"
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+@db = SQLite3::Database.open "ny_airbnb_data"
+@db.print_table("
+                SELECT name, host_name, price, neighbourhood, room_type
+                FROM listings 
+                LIMIT 25;
+                ")
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+# Options
 
-## Contributing
+- `:guide_preference` (boolean, default: true) - shows guides
+- `:guide_tolerance` (integer, default: 3) - shows guide if the number of columns is over the tolerance
+- `:width_tolerance` (integer, default: 2) - shows guide if width of column is above
+- `:margin` (integer, default: 3) - adjusts the margin on the left of the table
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/JackMarx/sqlite_print_table.
+Exapmle With Options
+
+```
+require "sqlite3"
+require "sqlite_print_table"
+
+@db = SQLite3::Database.open "ny_airbnb_data"
+@db.print_table("
+                SELECT name, host_name, price, neighbourhood, room_type
+                FROM listings 
+                LIMIT 25;
+                ", guide_tolerance: 4, width_tolerance: 5, margin: 10 )
+```
 
 ## License
 
