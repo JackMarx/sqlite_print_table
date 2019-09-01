@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["seriousfools@gmail.com"]
 
   spec.summary       = "The sqlite print table gem is used to print a formatted table from a sqlite database using a SQL query."
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/JackMarx/sqlite_print_table"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -19,8 +19,8 @@ Gem::Specification.new do |spec|
     spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
     spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-    spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+    spec.metadata["source_code_uri"] = "https://github.com/JackMarx/sqlite_print_table"
+    spec.metadata["changelog_uri"] = "https://github.com/JackMarx/sqlite_print_table/blob/master/CHANGELOG.md"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
